@@ -1,0 +1,184 @@
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_THEME: league
+#+REVEAL_TRANS: cube
+#+REVEAL_PLUGINS: (highlight)
+
+#+OPTIONS: num:nil reveal_title_slide:nil toc:nil
+
+* Let's talk about test
+
+  Höst 2019
+
+/Ville Svärd/
+
+* Först - ett par ord om kvalitét och produktivitet
+** Kvalitét kontra leveransförmåga
+#+ATTR_REVEAL: :frag appear
+ - Nä!
+
+** Höja kvalitét?
+#+ATTR_REVEAL: :frag appear
+ - Scope!
+ - Iteration
+ - Peer review
+ - Kodkvalitét
+ - Refactoring
+ - (Automatiska) Test!
+
+* Min bakgrund med test
+
+** A long time ago in a galaxy far, far away
+
+** Jag skriver test för att
+
+*** ...jag är lat och bekväm
+  - jag orkar inte hålla på att köra __main__ hela tiden
+
+*** ...det låter mig jobba snabbare
+  - och säkrare
+
+*** ...och jag behöver inte hålla /allting/ i huvudet hela tiden
+
+*** ...och för att jag är glömsk och disträ
+
+*** ...och för att jag vill veta att koden jag skrivit har /körts/
+  - och fortsätter bli körd, ofta
+
+*** ...och för att jag ständigt behöver bli påmind
+  - om att koden kan bli /lite enklare/
+  - om att koden kan bli /lite lättare att förstå/
+
+* Unittest, Test First, Refactoring, TDD
+
+** Varning för banala exempel!
+
+** Unittest
+
+Testa hur /en bit logik/ beter sig /i en situation/
+
+*** Vad utmärker ett unittest 
+#+ATTR_REVEAL: :frag (appear)
+ - Isolerat
+ - Snabbt
+ - Snabbt!
+ - Ja, snabbt!
+ - Enkelt (att förstå)
+ - Testar EN sak
+
+*** Test runner 
+- Test-köraren utmärker /inte/ ett unittest
+  
+#+ATTR_REVEAL: :frag (appear)
+  [[./images/runner.png]]
+
+** 
+    [[./images/handy-right-about-now.png]]
+
+** Test first
+
+Skriv ett (unit) test /före/ implementationen
+
+** 
+    [[./images/handy-right-about-now.png]]
+
+*** Vad utmärker /Test First/
+ - Tänk ut och fundera på kontraktet /innan/
+ - /Programming by wishful thinking/
+ - Hjälper mig komma framåt, ta första steget
+
+
+** Refactoring
+Changing the structure of existing code /without changing its behaviour/
+
+*** Vad utmärker refactoring
+ - Förutsägbara ändringar - transformationer
+ - /Av existerande kod/
+ - /Bakom en viss abstraktion/ inte märkbara
+ - Ändrar. Inte. Beteende.
+
+** TDD
+
+#+ATTR_REVEAL: :frag (highlight-red highlight-green highlight-blue)
+- RED: Write a /failing/ test
+- GREEN: Write /just enough/ code to make it pass
+- REFACTOR: Make the code look like you want to leave it
+
+** 
+    [[./images/handy-right-about-now.png]]
+
+
+*** Vad utmärker TDD
+ - Red -> Green -> Refactor
+ - /Lyssna/ på tester
+   - Är det svårt?
+ - Underhåll/refaktorera även testkod
+ - Kör testet
+ - Kör det igen
+
+* Test - när är det /värt/ det?
+#+ATTR_REVEAL: :frag appear
+Alltid
+
+** Srsly
+
+Testa kontrakt /vi vill skall hålla/
+
+eller
+
+Logik, saker /vi/ kan /göra/ eller /tänka/ fel
+
+eller
+
+Testa sånt vi /vill veta när det går fel/ (men kanske kan fixa lätt)
+
+eller
+
+Testa antaganden vi /vill veta när de inte längre stämmer/
+
+* Skriva BRA tester
+
+** Snabbt
+ - Jag vill kunna köra det /hela tiden/ utan att behöva tänka
+
+** Isolerat
+ - Undvik delat state och krånglig setup
+ - Eller abstrahera det
+
+** Enkelt och kort med /ett bra namn/
+ - Jag vill veta direkt vilket antagande som inte stämmer när testet går fel
+ - Helst bara genom att se på testet och output
+
+** Refaktorera testet
+ - /Precis som koden - testet är kod!/
+
+** Kodvalitét
+ - refaktorera
+ - förbättra
+ - förenkla
+ - förtydliga
+
+** Använd /fixtures/ för gemensam setup
+ - refactorera även dem!
+ - Duplicering är ett tecken på återanvändbar setup och/eller gemensamma beroenden
+
+** Läsbarhet
+ - OM jag måste tittat på testet vill jag /då/ omedelbart veta vad det gör
+ - Gäller även assertions och felmeddelanden!
+
+** Gör data explicit
+ - Skilj på data och test
+ - Extrahera gärna till egna datastrukturer
+   - Gör det tydligare
+   - Gör att jag kan köra med andra datauppsättningar (utan att ändra testet)
+   - Gör testet mindre känsligt för ändringar
+
+** Tänk på om och hur du vill underhålla testet
+
+* Andra saker att prata om (någon annan gång)
+ - Top-down vs Bottom-up/Outside-in vs inside-out
+ - Komma igång med tester
+ - Fakes, doubles, mocks
+ - Mutation testing
+ - Generative testing & Property based testing
+ - Andra typer av test (integration-, acceptance, end-to-end)
+   - ...och varför vi tenderar att /inte/ skriva sådana på Funnel

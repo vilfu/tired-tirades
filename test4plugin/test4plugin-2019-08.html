@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<meta name="author" content="(Ville)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/css/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/css/theme/league.css" id="theme"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/lib/css/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section>
+<section id="slide-orgbb0b9df">
+<h2 id="orgbb0b9df">Let's talk about test</h2>
+<p>
+Höst 2019
+</p>
+
+<p>
+<i>Ville Svärd</i>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-orga243cfe">
+<h2 id="orga243cfe">Först - ett par ord om kvalitét och produktivitet</h2>
+<div class="outline-text-2" id="text-orga243cfe">
+</div>
+</section>
+<section id="slide-org7c67675">
+<h3 id="org7c67675">Kvalitét kontra leveransförmåga</h3>
+<ul class="fragment appear">
+<li>Nä!</li>
+
+</ul>
+
+</section>
+<section id="slide-orgca28e97">
+<h3 id="orgca28e97">Höja kvalitét?</h3>
+<ul class="fragment appear">
+<li>Scope!</li>
+<li>Iteration</li>
+<li>Peer review</li>
+<li>Kodkvalitét</li>
+<li>Refactoring</li>
+<li>(Automatiska) Test!</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org9806fe2">
+<h2 id="org9806fe2">Min bakgrund med test</h2>
+<div class="outline-text-2" id="text-org9806fe2">
+</div>
+</section>
+<section id="slide-org5a1dd9b">
+<h3 id="org5a1dd9b">A long time ago in a galaxy far, far away</h3>
+
+</section>
+<section id="slide-orgf1c6aff">
+<h3 id="orgf1c6aff">Jag skriver test för att</h3>
+<div class="outline-text-3" id="text-orgf1c6aff">
+</div>
+</section>
+<section id="slide-org46f5ea4">
+<h4 id="org46f5ea4">&#x2026;jag är lat och bekväm</h4>
+<ul>
+<li>jag orkar inte hålla på att köra <span class="underline"><span class="underline">main</span></span> hela tiden</li>
+
+</ul>
+
+</section>
+<section id="slide-org753feae">
+<h4 id="org753feae">&#x2026;det låter mig jobba snabbare</h4>
+<ul>
+<li>och säkrare</li>
+
+</ul>
+
+</section>
+<section id="slide-org1ab6f49">
+<h4 id="org1ab6f49">&#x2026;och jag behöver inte hålla <i>allting</i> i huvudet hela tiden</h4>
+
+</section>
+<section id="slide-org45dae83">
+<h4 id="org45dae83">&#x2026;och för att jag är glömsk och disträ</h4>
+
+</section>
+<section id="slide-org16e33b6">
+<h4 id="org16e33b6">&#x2026;och för att jag vill veta att koden jag skrivit har <i>körts</i></h4>
+<ul>
+<li>och fortsätter bli körd, ofta</li>
+
+</ul>
+
+</section>
+<section id="slide-org6e45249">
+<h4 id="org6e45249">&#x2026;och för att jag ständigt behöver bli påmind</h4>
+<ul>
+<li>om att koden kan bli <i>lite enklare</i></li>
+<li>om att koden kan bli <i>lite lättare att förstå</i></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org4741e47">
+<h2 id="org4741e47">Unittest, Test First, Refactoring, TDD</h2>
+<div class="outline-text-2" id="text-org4741e47">
+</div>
+</section>
+<section id="slide-org751396e">
+<h3 id="org751396e">Varning för banala exempel!</h3>
+
+</section>
+<section id="slide-orgbe2a4b5">
+<h3 id="orgbe2a4b5">Unittest</h3>
+<p>
+Testa hur <i>en bit logik</i> beter sig <i>i en situation</i>
+</p>
+
+</section>
+<section id="slide-org8310dfc">
+<h4 id="org8310dfc">Vad utmärker ett unittest</h4>
+<ul>
+<li class="fragment appear">Isolerat</li>
+<li class="fragment appear">Snabbt</li>
+<li class="fragment appear">Snabbt!</li>
+<li class="fragment appear">Ja, snabbt!</li>
+<li class="fragment appear">Enkelt (att förstå)</li>
+<li class="fragment appear">Testar EN sak</li>
+
+</ul>
+
+</section>
+<section id="slide-org3ec0d68">
+<h4 id="org3ec0d68">Test runner</h4>
+<ul>
+<li>Test-köraren utmärker <i>inte</i> ett unittest</li>
+
+</ul>
+
+
+<div class="figure">
+<p><img src="./images/runner.png" alt="runner.png" class="fragment (appear)" />
+</p>
+</div>
+
+</section>
+<section id="slide-org65e0294">
+<h3 id="org65e0294"></h3>
+
+<div class="figure">
+<p><img src="./images/handy-right-about-now.png" alt="handy-right-about-now.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-org5409d70">
+<h3 id="org5409d70">Test first</h3>
+<p>
+Skriv ett (unit) test <i>före</i> implementationen
+</p>
+
+</section>
+<section id="slide-org35c423c">
+<h3 id="org35c423c"></h3>
+
+<div class="figure">
+<p><img src="./images/handy-right-about-now.png" alt="handy-right-about-now.png" />
+</p>
+</div>
+
+</section>
+<section id="slide-orgf775855">
+<h4 id="orgf775855">Vad utmärker <i>Test First</i></h4>
+<ul>
+<li>Tänk ut och fundera på kontraktet <i>innan</i></li>
+<li><i>Programming by wishful thinking</i></li>
+<li>Hjälper mig komma framåt, ta första steget</li>
+
+</ul>
+
+
+</section>
+<section id="slide-orgaf29dc9">
+<h3 id="orgaf29dc9">Refactoring</h3>
+<p>
+Changing the structure of existing code <i>without changing its behaviour</i>
+</p>
+
+</section>
+<section id="slide-orgf556827">
+<h4 id="orgf556827">Vad utmärker refactoring</h4>
+<ul>
+<li>Förutsägbara ändringar - transformationer</li>
+<li><i>Av existerande kod</i></li>
+<li><i>Bakom en viss abstraktion</i> inte märkbara</li>
+<li>Ändrar. Inte. Beteende.</li>
+
+</ul>
+
+</section>
+<section id="slide-orgafaf227">
+<h3 id="orgafaf227">TDD</h3>
+<ul>
+<li class="fragment highlight-red">RED: Write a <i>failing</i> test</li>
+<li class="fragment highlight-green">GREEN: Write <i>just enough</i> code to make it pass</li>
+<li class="fragment highlight-blue">REFACTOR: Make the code look like you want to leave it</li>
+
+</ul>
+
+</section>
+<section id="slide-org87961e7">
+<h3 id="org87961e7"></h3>
+
+<div class="figure">
+<p><img src="./images/handy-right-about-now.png" alt="handy-right-about-now.png" />
+</p>
+</div>
+
+
+</section>
+<section id="slide-org736b620">
+<h4 id="org736b620">Vad utmärker TDD</h4>
+<ul>
+<li>Red -&gt; Green -&gt; Refactor</li>
+<li><i>Lyssna</i> på tester
+<ul>
+<li>Är det svårt?</li>
+
+</ul></li>
+<li>Underhåll/refaktorera även testkod</li>
+<li>Kör testet</li>
+<li>Kör det igen</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org978ff3a">
+<h2 id="org978ff3a">Test - när är det <i>värt</i> det?</h2>
+<p class="fragment appear">
+Alltid
+</p>
+
+</section>
+<section id="slide-org3fd81f6">
+<h3 id="org3fd81f6">Srsly</h3>
+<p>
+Testa kontrakt <i>vi vill skall hålla</i>
+</p>
+
+<p>
+eller
+</p>
+
+<p>
+Logik, saker <i>vi</i> kan <i>göra</i> eller <i>tänka</i> fel
+</p>
+
+<p>
+eller
+</p>
+
+<p>
+Testa sånt vi <i>vill veta när det går fel</i> (men kanske kan fixa lätt)
+</p>
+
+<p>
+eller
+</p>
+
+<p>
+Testa antaganden vi <i>vill veta när de inte längre stämmer</i>
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-org79431aa">
+<h2 id="org79431aa">Skriva BRA tester</h2>
+<div class="outline-text-2" id="text-org79431aa">
+</div>
+</section>
+<section id="slide-org44d06a5">
+<h3 id="org44d06a5">Snabbt</h3>
+<ul>
+<li>Jag vill kunna köra det <i>hela tiden</i> utan att behöva tänka</li>
+
+</ul>
+
+</section>
+<section id="slide-org8b9393e">
+<h3 id="org8b9393e">Isolerat</h3>
+<ul>
+<li>Undvik delat state och krånglig setup</li>
+<li>Eller abstrahera det</li>
+
+</ul>
+
+</section>
+<section id="slide-org1af611f">
+<h3 id="org1af611f">Enkelt och kort med <i>ett bra namn</i></h3>
+<ul>
+<li>Jag vill veta direkt vilket antagande som inte stämmer när testet går fel</li>
+<li>Helst bara genom att se på testet och output</li>
+
+</ul>
+
+</section>
+<section id="slide-org36d6aa3">
+<h3 id="org36d6aa3">Refaktorera testet</h3>
+<ul>
+<li><i>Precis som koden - testet är kod!</i></li>
+
+</ul>
+
+</section>
+<section id="slide-org3cc1138">
+<h3 id="org3cc1138">Kodvalitét</h3>
+<ul>
+<li>refaktorera</li>
+<li>förbättra</li>
+<li>förenkla</li>
+<li>förtydliga</li>
+
+</ul>
+
+</section>
+<section id="slide-org5119275">
+<h3 id="org5119275">Använd <i>fixtures</i> för gemensam setup</h3>
+<ul>
+<li>refactorera även dem!</li>
+<li>Duplicering är ett tecken på återanvändbar setup och/eller gemensamma beroenden</li>
+
+</ul>
+
+</section>
+<section id="slide-orgf8ce675">
+<h3 id="orgf8ce675">Läsbarhet</h3>
+<ul>
+<li>OM jag måste tittat på testet vill jag <i>då</i> omedelbart veta vad det gör</li>
+<li>Gäller även assertions och felmeddelanden!</li>
+
+</ul>
+
+</section>
+<section id="slide-org74b3f22">
+<h3 id="org74b3f22">Gör data explicit</h3>
+<ul>
+<li>Skilj på data och test</li>
+<li>Extrahera gärna till egna datastrukturer
+<ul>
+<li>Gör det tydligare</li>
+<li>Gör att jag kan köra med andra datauppsättningar (utan att ändra testet)</li>
+<li>Gör testet mindre känsligt för ändringar</li>
+
+</ul></li>
+
+</ul>
+
+</section>
+<section id="slide-org62ac053">
+<h3 id="org62ac053">Tänk på om och hur du vill underhålla testet</h3>
+
+</section>
+</section>
+<section>
+<section id="slide-org82ba3f1">
+<h2 id="org82ba3f1">Andra saker att prata om (någon annan gång)</h2>
+<ul>
+<li>Top-down vs Bottom-up/Outside-in vs inside-out</li>
+<li>Komma igång med tester</li>
+<li>Fakes, doubles, mocks</li>
+<li>Mutation testing</li>
+<li>Generative testing &amp; Property based testing</li>
+<li>Andra typer av test (integration-, acceptance, end-to-end)
+<ul>
+<li>&#x2026;och varför vi tenderar att <i>inte</i> skriva sådana på Funnel</li>
+
+</ul></li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+});
+</script>
+</body>
+</html>
