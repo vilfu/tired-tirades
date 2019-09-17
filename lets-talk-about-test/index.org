@@ -181,4 +181,4 @@ Testa antaganden vi /vill veta när de inte längre stämmer/
  - Mutation testing
  - Generative testing & Property based testing
  - Andra typer av test (integration-, acceptance, end-to-end)
-   - ...och varför vi tenderar att /inte/ skriva sådana på Funnel
+   - ...och varför vi tenderar att /inte/ skriva sådana
